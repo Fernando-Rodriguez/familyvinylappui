@@ -1,7 +1,7 @@
 <template>
   <div class="MainPageAlbum">
-    <nav-bar v-bind:user-name="userNameMain"/>
-    <main-page-album />
+    <nav-bar class="sidebar"></nav-bar>
+    <main-page-album class="main-page" />
   </div>
 </template>
 
@@ -34,10 +34,12 @@ name: "MainPage",
 <style scoped>
 
 .MainPageAlbum{
+  width: 100%;
+  height: 100vh;
   background-color: #171717;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
 }
 
 </style>

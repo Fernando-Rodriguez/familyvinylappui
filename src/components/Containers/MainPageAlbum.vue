@@ -1,10 +1,13 @@
 <template>
   <div class="main-container">
-    <search-bar class="search-container" @button-clicked="SearchFunction"/>
+    <Input class="search-container"
+                @button-clicked="InputChanged"
+                @input-changed="InputChanged"/>
     <div class="container">
       <div v-for="(album, index) in DisplayAlbums" v-bind:Key="index">
         <router-link v-bind:to="`/${album.id}/album`">
-          <album-card v-bind:albumModel="album" @card-clicked="AlbumClickedOn"/>
+          <album-card v-bind:albumModel="album"
+                      @card-clicked="AlbumClickedOn"/>
         </router-link>
       </div>
     </div>
@@ -13,21 +16,21 @@
 
 <script>
 import AlbumCard from '../InteractivePieces/AlbumCard';
-import SearchBar from "@/components/InteractivePieces/SearchBar";
-import GetToken from "@/Utilities/TokenManager";
-import Albums from '../../TestData/Data';
+import GetToken from "@/Services/token.service";
+import Albums from '../../Services/data.service';
+import Input from "@/components/InteractivePieces/Input";
 
 export default {
   name: "MainPageAlbum",
   components:{
-    SearchBar,
+    Input,
     AlbumCard
   },
   mounted() {
   //this.GetData();
-  //this.GetFakeData();
+  this.GetFakeData();
   //GetToken();
-    this.TokenManager();
+  //this.TokenManager();
   },
 
   methods:{
@@ -44,7 +47,6 @@ export default {
       this.ClickedAlbum.forEach(a => {
         alert(a.album);
       })
-
     },
 
     async TokenManager() {
@@ -81,16 +83,15 @@ export default {
       }
     },
 
-    SearchFunction(searchParam){
-
+    InputChanged(searchParam){
       if(searchParam === ""){
         this.DisplayAlbums = this.albumModelArray;
       }
       else{
         this.DisplayAlbums = this.albumModelArray.filter((album) => {
           return (
-              album.album.toLowerCase() === searchParam.toLowerCase() ||
-              album.artist.toLowerCase() === searchParam.toLowerCase());
+              album.album.toLowerCase().includes(searchParam.toLowerCase()) ||
+              album.artist.toLowerCase().includes(searchParam.toLowerCase()));
         });
       }
     },
@@ -98,7 +99,6 @@ export default {
       this.DisplayAlbums = Albums.owned_Albums;
       this.albumModelArray = Albums.owned_Albums;
     }
-
   },
 
   data(){
@@ -116,18 +116,26 @@ export default {
 <style scoped>
 
 .main-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .container{
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
   background-color: #171717;
-  margin:10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.search-container{
+  margin: 20px;
 }
 
 </style>

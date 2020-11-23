@@ -23,10 +23,9 @@ export default {
 }
 
 #app{
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
+  box-sizing: inherit;
+  height: 100vh;
+  width: 100vw;
 }
 
 </style>

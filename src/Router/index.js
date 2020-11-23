@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainPage from "@/components/MainPage/MainPage";
-import Login from '@/components/LoginPage/Login';
+import MainPage from "@/Views/MainPage";
+import Login from '@/Views/Login';
 import AlbumPopUp from "@/components/Popup/AlbumPopUp";
 
 Vue.use(Router)

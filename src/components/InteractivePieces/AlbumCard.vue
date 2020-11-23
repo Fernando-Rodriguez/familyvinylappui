@@ -30,7 +30,7 @@ name: "AlbumCard",
   position: relative;
   font-size: 50px;
   box-sizing: border-box;
-  margin: 0px;
+  margin: 10px;
 }
 
 .albumCard:hover{
@@ -62,7 +62,6 @@ name: "AlbumCard",
   position: absolute;
   height: 180px;
   color: transparent;
-
 }
 
 .albumCard-album{
