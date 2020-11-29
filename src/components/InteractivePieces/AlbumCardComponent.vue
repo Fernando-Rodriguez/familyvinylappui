@@ -1,6 +1,6 @@
 <template>
-  <div class="albumCard" v-on:click="AlbumClickedOn()">
-    <img class="albumCard-img" v-bind:src="albumModel.imageUrl" />
+  <div class="albumCard" v-on:click="AlbumClickedOn">
+    <img class="albumCard-img" v-bind:src="albumModel.imageUrl" alt="album artwork"/>
     <h3 class="albumCard-artist">{{albumModel.artist}}</h3>
     <p class="albumCard-album">{{albumModel.album}}</p>
   </div>
@@ -28,7 +28,7 @@ name: "AlbumCard",
   justify-content: center;
   align-items: center;
   position: relative;
-  font-size: 50px;
+  font-size: 40px;
   box-sizing: border-box;
   margin: 10px;
 }
@@ -44,17 +44,15 @@ name: "AlbumCard",
   color: white;
 }
 
-.albumCard:hover >
-.albumCard-artist{
+.albumCard:hover .albumCard-artist{
   color: white;
 }
-.albumCard:hover >
-.albumCard-album{
+.albumCard:hover .albumCard-album{
   color: white;
 }
 
 .albumCard-img{
-  border-radius: 0%;
+  border-radius: 0;
   width: 100%;
 }
 

@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import MainPageAlbum from "@/components/Containers/MainPageAlbum";
-import NavBar from "@/components/InteractivePieces/NavBar";
+import MainPageAlbum from "@/components/Containers/MainPageContainer";
+import NavBar from "@/components/Containers/NavBarContainer";
 
 export default {
-name: "MainPage",
+name: "OwnedAlbums",
   components:{
     MainPageAlbum,
     NavBar
@@ -29,13 +29,14 @@ name: "MainPage",
     }
   }
 }
+
 </script>
 
 <style scoped>
 
 .MainPageAlbum{
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #171717;
   box-sizing: border-box;
   display: grid;

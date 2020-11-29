@@ -1,51 +1,64 @@
-import { TokenService } from "@/Services/token.service";
-import MethodTypes from './methodTypes.services';
+import TokenService from "@/Services/token.service";
+import albums from "@/Services/data.service";
+import axios from 'axios';
 
-const apiService = {
-     setApiHeaders: () =>{
-        return {
-            method: '',
-            headers: {
-                'Authorization': `Bearer ${TokenService.getToken()}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            redirect: 'follow', // manual, *follow, error
+const ApiService = {
+
+    init: (baseUrl) => {
+        axios.defaults.baseURL = baseUrl;
+    },
+
+    setApiHeaders: () => {
+        axios.defaults.headers = {
+            'Authorization': `Bearer ${TokenService.getToken()}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         };
     },
 
-    configHeaders: () => this.setApiHeaders(),
-
-    setApiUrl: () => process.env['VINYL_API_BASE '],
+    removeApiHeaders: () => {
+        axios.defaults.headers.common = {};
+    },
 
     getDataAsync: async () => {
-        this.configHeaders.method = `${MethodTypes.Get}`;
         try {
-            const response = await fetch(this.setApiUrl(), this.configHeaders());
-            const data = await response.json();
-            return data.owned_Albums;
+            return albums.owned_Albums;
+            // const response = await axios.get('/');
+            // const data = response.data;
+            // return data;
+
         } catch (e) {
-            console.log(e);
+            console.log(e.toString());
         }
     },
 
-    postDataAsync: async () => {
-        this.configHeaders.method = `${MethodTypes.Post}`;
+    postDataAsync: async (dataPacket) => {
         try {
-            await fetch(this.setApiUrl(), this.setApiHeaders(MethodTypes.Post));
+
+            const response = await axios.post('/', dataPacket);
+            const data = response.data;
+            return data;
+
         } catch (e) {
-            console.log(e);
+            console.log(e.toString());
         }
     },
 
-    deleteDataAsync: async () => {
-        this.configHeaders.method = `${MethodTypes.Delete}`;
+    deleteDataAsync: async (id) => {
         try {
-            await fetch(this.setApiUrl(), this.setApiHeaders(MethodTypes.Delete));
+
+            const response = await axios.delete(`/${id}`);
+            const data = response.data;
+            return data;
+
         } catch (e) {
-            console.log(e);
+            console.log(e.toString());
         }
+    },
+
+    generalRequestAsync: async (config) => {
+        return axios(config);
     }
 }
 
-export { apiService };
+export default ApiService;

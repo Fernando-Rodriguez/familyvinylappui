@@ -2,16 +2,19 @@
   <div class="main-form-container">
     <input type="text" required
            v-model="userInput"
-           v-on:input="InputChanged"/>
+           v-on:input="InputChanged" content="hey"/>
     <label class="label-name">
-      <span class="content-name">Name</span>
+      <span class="content-name">{{ labelName }}</span>
     </label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "InputCard",
+  name: "InputComponent",
+  props:{
+    labelName: String
+  },
   data(){
     return{
       userInput:"",
@@ -29,9 +32,9 @@ export default {
 <style scoped>
 
 .main-form-container{
-  margin:20px;
-  width: 500px;
-  height: 50px;
+  margin:0px;
+  width: 300px;
+  height: 60px;
   position: relative;
   overflow: hidden;
   color: white;
@@ -67,7 +70,7 @@ export default {
   position: absolute;
   height: 100%;
   width: 100%;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid gray;
   left: 0;
   bottom: -1px;
   transform: translateX(-100%);
@@ -77,7 +80,7 @@ export default {
   position: absolute;
   bottom: 5px;
   left: 0px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .main-form-container input:focus + .label-name .content-name,
@@ -89,8 +92,7 @@ export default {
 .main-form-container input:focus + .label-name::after,
 .main-form-container input:valid + .label-name::after{
   transform: translateX(0%);
-  transition: all 0.3s ease;
-
+  transition: all 0.2s ease;
 }
 
 input:required {
