@@ -1,18 +1,19 @@
 <template>
   <div class="MainPageAlbum">
     <nav-bar class="sidebar"></nav-bar>
-    <main-page-album class="main-page" />
+    <router-view class="main-page" />
+<!--    <main-page-album class="main-page" />-->
   </div>
 </template>
 
 <script>
-import MainPageAlbum from "@/components/Containers/MainPageContainer";
-import NavBar from "@/components/Containers/NavBarContainer";
+//import MainPageAlbum from "@/components/containers/MainPageContainer";
+import NavBar from "@/components/containers/NavBarContainer";
 
 export default {
 name: "OwnedAlbums",
   components:{
-    MainPageAlbum,
+    //MainPageAlbum,
     NavBar
   },
   data(){

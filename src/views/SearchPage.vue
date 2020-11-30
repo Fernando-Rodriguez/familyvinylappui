@@ -1,15 +1,13 @@
 <template>
   <div class="main-container">
-    <h1 class="main-title">Owned Vinyl</h1>
     <InputComponent class="search-container"
-                @button-clicked="InputHandler"
-                @input-changed="InputHandler"
-                label-name="Search Collection"/>
-
+                    @button-clicked="InputHandler"
+                    @input-changed="InputHandler"
+                    label-name="Search Collection"/>
     <div class="container">
       <div v-for="(album, index) in albumModelArray" v-bind:Key="index">
         <router-link v-bind:to="`/${album.id}/album`">
-          <album-card v-bind:albumModel="album"
+          <AlbumCardComponent v-bind:albumModel="album"
                       @card-clicked="AlbumClickedOn"/>
         </router-link>
       </div>
@@ -18,15 +16,15 @@
 </template>
 
 <script>
-import AlbumCard from '../InteractivePieces/AlbumCardComponent';
-import InputComponent from "@/components/InteractivePieces/InputComponent";
+import AlbumCardComponent from "@/components/interactivePieces/AlbumCardComponent";
+import InputComponent from "@/components/interactivePieces/InputComponent";
 import { mapState } from 'vuex';
 
 export default {
-  name: "MainPageAlbum",
+  name: "SearchPage",
   components:{
     InputComponent,
-    AlbumCard
+    AlbumCardComponent
   },
 
   created(){
@@ -34,8 +32,6 @@ export default {
   },
 
   mounted(){
-    //this.GetData();
-    //console.log('page refreshed');
   },
 
   computed: {
@@ -88,12 +84,6 @@ export default {
 </script>
 
 <style scoped>
-
-.main-title{
-  margin-top:20px;
-  color:white;
-  border-bottom: 1px white solid;
-}
 
 .main-container {
   width: 100%;

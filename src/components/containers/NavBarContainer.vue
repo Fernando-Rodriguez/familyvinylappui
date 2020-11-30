@@ -5,22 +5,25 @@
            src="https://image.shutterstock.com/image-photo/close-portrait-smiling-handsome-man-260nw-1011569245.jpg"
            alt="User Image, right here"/>
       <h1 class="navbar-user">Hello, {{ this.userInput }}!</h1>
-      <SearchBox class="search-box" />
+      <router-link to="/owned-albums/search">
+        <ButtonComponent button-content="Search" @button-clicked-event="SearchButtonEvent"  />
+      </router-link>
       <ButtonComponent button-content="Logout" @button-clicked-event="LogoutButtonEvent"  />
+      <AddPopUpContainer />
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import SearchBox from "@/components/InteractivePieces/SearchBoxComponent";
-import ButtonComponent from "@/components/InteractivePieces/ButtonComponent";
+import ButtonComponent from "@/components/interactivePieces/ButtonComponent";
+import AddPopUpContainer from "@/components/popup/AddPopUpContainer";
 
 export default {
   name: "NavBar",
   components:{
-    ButtonComponent,
-    SearchBox
+    AddPopUpContainer,
+    ButtonComponent
   },
   props:{
     userName: String
@@ -41,6 +44,9 @@ export default {
     ]),
     LogoutButtonEvent(){
       this.logout();
+    },
+    SearchButtonEvent(){
+
     }
   }
 }
@@ -80,14 +86,6 @@ export default {
   width: 200px;
   padding: 10px;
   box-shadow: 1px 1px 10px 1px black;
-}
-
-.search-box{
-  margin-top: 50px;
-  transition: 0.1s ease-in;
-}
-.search-box:hover{
-  transform: scale(1.01);
 }
 
 </style>

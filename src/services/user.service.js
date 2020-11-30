@@ -1,6 +1,6 @@
 import dotnet from 'dotenv';
-import TokenService from "@/Services/token.service";
-//import ApiService  from "@/Services/api.service";
+import TokenService from "@/services/token.service";
+//import VinylApiService  from "@/services/api.service";
 
 dotnet.config();
 
@@ -22,7 +22,7 @@ const UserService = {
 
         try {
             //makes the request.
-            //const response = await ApiService.generalRequestAsync(requestData);
+            //const response = await VinylApiService.generalRequestAsync(requestData);
 
             const response = {
                 data:{
@@ -34,7 +34,7 @@ const UserService = {
             TokenService.saveToken(response.data.access_token);
 
             //pre-sets the headers with the token for the api calls.
-            //ApiService.setApiHeaders();
+            //VinylApiService.setApiHeaders();
 
         } catch (e) {
             console.log(e);
@@ -44,7 +44,7 @@ const UserService = {
     logout: () => {
         //removes the tokens set when the user logs in.
         TokenService.removeToken();
-        //ApiService.removeApiHeaders();
+        //VinylApiService.removeApiHeaders();
     }
 }
 

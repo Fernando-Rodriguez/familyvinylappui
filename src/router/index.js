@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/Views/LoginPage';
-import OwnedAlbums from "@/Views/OwnedAlbums";
-import HomePage from "@/Views/HomePage";
-import TokenService from "@/Services/token.service";
+import Login from '@/views/LoginPage';
+import OwnedAlbums from "@/views/OwnedAlbums";
+import HomePage from "@/views/HomePage";
+import TokenService from "@/services/token.service";
+import SearchPage from "@/views/SearchPage";
+import MainPageContainer from "@/components/containers/MainPageContainer";
 
 Vue.use(Router)
 
@@ -16,7 +18,19 @@ Vue.use(Router)
         },
         {
             path: '/owned-albums',
-            component: OwnedAlbums
+            component: OwnedAlbums,
+            children: [
+                {
+                    name: 'allAlbums',
+                    path: '/owned-albums/all',
+                    component: MainPageContainer
+                },
+                {
+                    name: 'search',
+                    path: '/owned-albums/search',
+                    component: SearchPage
+                }
+            ]
         },
         {
             path: '/login',
@@ -37,7 +51,7 @@ router.beforeEach((to, from, next) => {
     if (!isPublic && !loggedIn) {
         return next({
             path:'/login',
-            query: {redirect: to.fullPath}  // Store the full path to redirect the user to after login
+            query: {redirect: to.fullPath}  // store the full path to redirect the user to after login
         });
     }
 

@@ -2,7 +2,7 @@
   <div class="main-form-container">
     <input type="text" required
            v-model="userInput"
-           v-on:input="InputChanged" content="hey"/>
+           v-on:input="InputChanged"/>
     <label class="label-name">
       <span class="content-name">{{ labelName }}</span>
     </label>

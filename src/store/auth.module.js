@@ -1,10 +1,11 @@
-import UserService from "@/Services/user.service";
-import TokenService from "@/Services/token.service";
-import router from "@/Router";
+import UserService from "@/services/user.service";
+import TokenService from "@/services/token.service";
+import router from "@/router";
 
 const state = {
     authenticating: false,
-    accessToken: TokenService.getToken()
+    accessToken: TokenService.getToken(),
+    isLoggedIn: false
 };
 
 const getters = {
@@ -45,12 +46,8 @@ const actions = {
 
         try {
             const token = await UserService.login(email, password);
-            commit('loginSuccess', token)
-
-            // Redirect the user to the page he first tried to visit or to the home view
+            commit('loginSuccess', token);
             router.push('/').then();
-
-            return true
         }
         catch (e) {
             console.log(e);

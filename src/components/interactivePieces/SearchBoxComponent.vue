@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import InputComponent from "@/components/InteractivePieces/InputComponent";
-import ButtonComponent from "@/components/InteractivePieces/ButtonComponent";
+import InputComponent from "@/components/interactivePieces/InputComponent";
+import ButtonComponent from "@/components/interactivePieces/ButtonComponent";
 
 export default {
 name: "SearchBox",

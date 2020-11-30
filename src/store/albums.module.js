@@ -1,4 +1,4 @@
-import ApiService from "@/Services/api.service";
+import VinylApiService from "@/services/vinylApiService";
 
 const state = {
     albums: []
@@ -13,7 +13,7 @@ const getters = {
 const actions = {
 
     getAllAlbumsAsync: async ({ commit }) => {
-        commit('setAlbums', await ApiService.getDataAsync());
+        commit('setAlbums', await VinylApiService.getDataAsync());
         console.log(`Albums called in store. ${state.albums}`);
     },
 

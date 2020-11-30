@@ -8,7 +8,7 @@
 
 <script>
 export default {
-name: "AlbumCard",
+name: "AlbumCardComponent",
   props:{
     albumModel: Object
   },

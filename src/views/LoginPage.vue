@@ -11,7 +11,7 @@
         </div>
         <div class="login-form">
           <InputComponent label-name="UserName" @input-changed="HandleUsername"/>
-          <InputComponent label-name="Password" @input-changed="HandlePassword"/>
+          <PasswordComponent label-name="Password" @input-changed="HandlePassword" />
          <ButtonComponent @button-clicked-event="LoginUser" button-content="Login" />
         </div>
       </div>
@@ -20,15 +20,17 @@
 </template>
 
 <script>
-import ButtonComponent from "@/components/InteractivePieces/ButtonComponent";
-import InputComponent from "@/components/InteractivePieces/InputComponent";
+import ButtonComponent from "@/components/interactivePieces/ButtonComponent";
+import InputComponent from "@/components/interactivePieces/InputComponent";
+import PasswordComponent from "@/components/interactivePieces/PasswordComponent";
 import {mapGetters, mapActions} from 'vuex';
 
 export default {
   name: "Login",
   components:{
     InputComponent,
-    ButtonComponent
+    ButtonComponent,
+    PasswordComponent
   },
   data(){
     return{

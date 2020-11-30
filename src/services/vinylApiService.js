@@ -1,8 +1,8 @@
-import TokenService from "@/Services/token.service";
-import albums from "@/Services/data.service";
+import TokenService from "@/services/token.service";
+import albums from "@/services/data.service";
 import axios from 'axios';
 
-const ApiService = {
+const VinylApiService = {
 
     init: (baseUrl) => {
         axios.defaults.baseURL = baseUrl;
@@ -61,4 +61,4 @@ const ApiService = {
     }
 }
 
-export default ApiService;
+export default VinylApiService;
