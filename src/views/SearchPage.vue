@@ -1,18 +1,18 @@
 <template>
   <transition name="fade" appear>
-  <div class="main-container">
-    <InputComponent class="search-container"
-                    @button-clicked="InputHandler"
-                    @input-changed="InputHandler"
-                    label-name="Search Collection"/>
-    <div class="container">
-      <div v-for="(album, index) in albumModelArray" v-bind:Key="index">
-        <router-link v-bind:to="`/${album.id}/album`">
-          <AlbumCardComponent v-bind:albumModel="album" @card-clicked="AlbumClickedOn"/>
-        </router-link>
+    <div class="main-container">
+        <InputComponent class="search-container"
+                        @button-clicked="InputHandler"
+                        @input-changed="InputHandler"
+                        label-name="Search Collection"/>
+      <div class="container">
+        <div v-for="(album, index) in albumModelArray" v-bind:Key="index">
+          <router-link v-bind:to="`/${album.id}/album`">
+            <AlbumCardComponent v-bind:albumModel="album" @card-clicked="AlbumClickedOn"/>
+          </router-link>
+        </div>
       </div>
     </div>
-  </div>
   </transition>
 </template>
 

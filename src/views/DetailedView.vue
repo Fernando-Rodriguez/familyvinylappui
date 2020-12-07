@@ -4,7 +4,10 @@
     <div class="detailed-text">
       <h2 class="detailed-text-title">{{ this.album.artist }}</h2>
       <h3 class="detailed-text-album">{{ this.album.album }}</h3>
-      <p class="detailed-text-description"> Wooooo</p>
+      <p class="detailed-text-description">Owned by {{this.album.user}}</p>
+      <div class="detailed-rating">
+        <h2> This album has {{ this.album.rating }} stars </h2>
+      </div>
     </div>
   </div>
 </template>
