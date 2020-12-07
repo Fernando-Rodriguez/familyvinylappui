@@ -3,19 +3,24 @@
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
+
           <div class="modal-body">
             <slot name="body">
               default body
             </slot>
           </div>
+
           <div class="modal-footer">
             <slot name="footer">
               default footer
-              <button class="navbar-add-album" @click="$emit('close')">
-                OK
-              </button>
+              <router-link to="/owned-albums/all" >
+                <button class="navbar-add-album" @click="$emit('close')">
+                  OK
+                </button>
+              </router-link>
             </slot>
           </div>
+
         </div>
       </div>
     </div>

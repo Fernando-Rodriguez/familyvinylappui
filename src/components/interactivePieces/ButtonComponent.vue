@@ -27,6 +27,8 @@ name: "ButtonComponent",
   border: 1px white solid;
   transition: 0.1s ease-in-out;
   margin: 10px 0px;
+  text-decoration: none;
+  width: inherit;
 }
 
 .navbar-add-album button:hover{

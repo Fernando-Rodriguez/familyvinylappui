@@ -5,9 +5,7 @@ const state = {
 };
 
 const getters = {
-    returnAllAlbums: (state) => {
-        return state.albums;
-    }
+
 };
 
 const actions = {
@@ -30,6 +28,7 @@ const mutations = {
 
     addAlbum: (state, addedAlbum) => {
         state.albums.push(addedAlbum);
+        console.log("album added");
     }
 };
 

@@ -3,7 +3,9 @@
     <p class="title-text">Add Album to Collection</p>
     <InputComponent class="custom-input" @input-changed="InputArtistHandler" label-name="Artist"/>
     <InputComponent class="custom-input" @input-changed="InputAlbumHandler" label-name="Album"/>
-    <ButtonComponent @button-clicked-event="addNewAlbum" button-content="Add Album" />
+    <router-link to="/owned-albums/all">
+      <ButtonComponent @button-clicked-event="addNewAlbum" button-content="Add Album" />
+    </router-link>
     <div class="loading-box" v-if="submitLoading">
       <p>Loading...</p>
     </div>
@@ -94,6 +96,10 @@ name: "SearchBox",
   top:300px;
   background:white;
   border-radius: 1%;
+}
+
+router-link{
+  text-decoration: none;
 }
 
 </style>

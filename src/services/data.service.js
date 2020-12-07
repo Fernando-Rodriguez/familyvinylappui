@@ -70,6 +70,6 @@ const albums = {
         "artist": "Pink Floyd",
         "imageUrl": "https://i.scdn.co/image/ab67616d0000b273f05e5ac32fdd79d100315a20"
     }]
-}
+};
 
 export default albums;

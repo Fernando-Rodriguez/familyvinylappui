@@ -17,7 +17,7 @@ const getters = {
     authenticating: (state) => {
         return state.authenticating
     }
-}
+};
 
 const mutations = {
     loginRequest(state) {
@@ -36,7 +36,7 @@ const mutations = {
     logoutSuccess(state) {
         state.accessToken = ''
     }
-}
+};
 
 const actions = {
 
@@ -47,7 +47,7 @@ const actions = {
         try {
             const token = await UserService.login(email, password);
             commit('loginSuccess', token);
-            router.push('/').then();
+            router.push('/owned-albums/all').then();
         }
         catch (e) {
             console.log(e);
@@ -61,7 +61,7 @@ const actions = {
         commit('logoutSuccess')
         router.push('/login').then();
     }
-}
+};
 
 export const auth = {
     namespaced: true,
@@ -69,4 +69,4 @@ export const auth = {
     getters,
     actions,
     mutations
-}
+};

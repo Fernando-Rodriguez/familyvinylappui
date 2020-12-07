@@ -1,15 +1,19 @@
 <template>
   <div class="navbar-container">
     <div class="navbar-user-container">
-      <img class="navbar-user-image"
-           src="https://image.shutterstock.com/image-photo/close-portrait-smiling-handsome-man-260nw-1011569245.jpg"
-           alt="User Image, right here"/>
-      <h1 class="navbar-user">Hello, {{ this.userInput }}!</h1>
-      <router-link to="/owned-albums/search">
-        <ButtonComponent button-content="Search" @button-clicked-event="SearchButtonEvent"  />
+      <router-link class="router-link-style" to="/owned-albums/all">
+        <img class="navbar-user-image"
+             src="https://image.shutterstock.com/image-photo/close-portrait-smiling-handsome-man-260nw-1011569245.jpg"
+             alt="User Image, right here"/>
+        <h1 class="navbar-user">Hello, {{ this.userInput }}!</h1>
       </router-link>
-      <ButtonComponent button-content="Logout" @button-clicked-event="LogoutButtonEvent"  />
-      <AddPopUpContainer />
+      <router-link class="router-link-style" to="/owned-albums/search">
+        <ButtonComponent class="button-components" button-content="Search" @button-clicked-event="SearchButtonEvent"  />
+      </router-link>
+      <ButtonComponent class="button-components" button-content="Logout" @button-clicked-event="LogoutButtonEvent"  />
+      <router-link class="router-link-style" to="/owned-albums/add-album" >
+        <ButtonComponent class="button-components" button-content="Add Albums" />
+      </router-link>
     </div>
   </div>
 </template>
@@ -17,12 +21,10 @@
 <script>
 import { mapActions } from 'vuex';
 import ButtonComponent from "@/components/interactivePieces/ButtonComponent";
-import AddPopUpContainer from "@/components/popup/AddPopUpContainer";
 
 export default {
   name: "NavBar",
   components:{
-    AddPopUpContainer,
     ButtonComponent
   },
   props:{
@@ -30,7 +32,7 @@ export default {
   },
   data(){
     return{
-      userInput: "fernando",
+      userInput: "Fernando",
       albumModel: {
         albumInput: "",
         artistInput: "",
@@ -79,6 +81,7 @@ export default {
 .navbar-user{
   font-size: 20px;
   color: white;
+  text-align: center;
 }
 
 .navbar-user-image{
@@ -86,6 +89,16 @@ export default {
   width: 200px;
   padding: 10px;
   box-shadow: 1px 1px 10px 1px black;
+}
+
+.router-link-style{
+  text-decoration: none;
+  outline: none;
+  border-style: none;
+}
+
+.button-components{
+  width: 180px;
 }
 
 </style>

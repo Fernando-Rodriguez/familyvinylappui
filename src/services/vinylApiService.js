@@ -32,13 +32,19 @@ const VinylApiService = {
         }
     },
 
+    searchDataAsync: async (input_Id) => {
+        try {
+            return albums.owned_Albums.filter(album => album.id === input_Id)[0];
+
+        } catch (e) {
+            console.log(e.toString());
+        }
+    },
+
     postDataAsync: async (dataPacket) => {
         try {
-
             const response = await axios.post('/', dataPacket);
-            const data = response.data;
-            return data;
-
+            return response.data;
         } catch (e) {
             console.log(e.toString());
         }
@@ -46,11 +52,8 @@ const VinylApiService = {
 
     deleteDataAsync: async (id) => {
         try {
-
             const response = await axios.delete(`/${id}`);
-            const data = response.data;
-            return data;
-
+            return response.data;
         } catch (e) {
             console.log(e.toString());
         }
@@ -59,6 +62,6 @@ const VinylApiService = {
     generalRequestAsync: async (config) => {
         return axios(config);
     }
-}
+};
 
 export default VinylApiService;

@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
-    <button id="show-modal" @click="showModal = true">Show Modal</button>
-    <AddAlbumPopUp v-if="showModal" @close="showModal = false">
+  <div id="container">
+    <AddAlbumPopUp @close="showModal = false">
       <SearchBoxComponent slot="body"/>
     </AddAlbumPopUp>
   </div>
@@ -27,7 +26,9 @@ name: "AddPopUpContainer",
 
 <style scoped>
 
-
-
+#container{
+  width: 100%;
+  height:100%;
+}
 
 </style>

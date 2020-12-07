@@ -46,6 +46,6 @@ const UserService = {
         TokenService.removeToken();
         //VinylApiService.removeApiHeaders();
     }
-}
+};
 
 export default UserService;

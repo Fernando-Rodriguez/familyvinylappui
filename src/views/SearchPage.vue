@@ -1,4 +1,5 @@
 <template>
+  <transition name="fade" appear>
   <div class="main-container">
     <InputComponent class="search-container"
                     @button-clicked="InputHandler"
@@ -7,12 +8,12 @@
     <div class="container">
       <div v-for="(album, index) in albumModelArray" v-bind:Key="index">
         <router-link v-bind:to="`/${album.id}/album`">
-          <AlbumCardComponent v-bind:albumModel="album"
-                      @card-clicked="AlbumClickedOn"/>
+          <AlbumCardComponent v-bind:albumModel="album" @card-clicked="AlbumClickedOn"/>
         </router-link>
       </div>
     </div>
   </div>
+  </transition>
 </template>
 
 <script>
@@ -93,6 +94,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: ease-in 0.2s;
 }
 
 .container{
@@ -106,6 +108,17 @@ export default {
 
 .search-container{
   margin: 10px;
+}
+
+.fade-enter-active,
+.fade-leave-active{
+  transition: opacity 0.3s;
+  transform: translateX(100%);
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
 </style>

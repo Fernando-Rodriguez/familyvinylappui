@@ -6,8 +6,10 @@ import HomePage from "@/views/HomePage";
 import TokenService from "@/services/token.service";
 import SearchPage from "@/views/SearchPage";
 import MainPageContainer from "@/components/containers/MainPageContainer";
+import AddPopUpContainer from "@/components/popup/AddPopUpContainer";
+import DetailedView from "@/views/DetailedView";
 
-Vue.use(Router)
+Vue.use(Router);
 
  const router = new Router({
     mode:'history',
@@ -29,6 +31,16 @@ Vue.use(Router)
                     name: 'search',
                     path: '/owned-albums/search',
                     component: SearchPage
+                },
+                {
+                    name: 'addAlbums',
+                    path: '/owned-albums/add-album',
+                    component: AddPopUpContainer
+                },
+                {
+                    name: 'detailedView',
+                    path: '/:id/album',
+                    component: DetailedView
                 }
             ]
         },
@@ -41,7 +53,7 @@ Vue.use(Router)
             }
         }
     ]
-})
+});
 
 router.beforeEach((to, from, next) => {
     const isPublic = to.matched.some(record => record.meta.public)
@@ -57,9 +69,9 @@ router.beforeEach((to, from, next) => {
 
     // Do not allow user to visit login page or register page if they are logged in
     if (loggedIn && onlyWhenLoggedOut) {
-        return next('/')
+        return next('/owned-albums/all')
     }
     next();
-})
+});
 
 export default router;
