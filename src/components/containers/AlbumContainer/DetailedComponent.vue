@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import VinylApiService from '../services/vinylApiService';
+import VinylApiService from '../../../services/vinylApiService';
 
 export default {
-name: "DetailedView",
+name: "DetailedComponent",
   data(){
     return{
       album: {}

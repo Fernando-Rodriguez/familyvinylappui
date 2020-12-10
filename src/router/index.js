@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/LoginPage';
-import OwnedAlbums from "@/views/OwnedAlbums";
-import HomePage from "@/views/HomePage";
+import LoginView from '@/components/views/LoginView';
+import OwnedAlbumsView from "@/components/views/OwnedAlbumsView";
+import HomeView from "@/components/views/HomeView";
 import TokenService from "@/services/token.service";
-import SearchPage from "@/views/SearchPage";
-import MainPageContainer from "@/components/containers/MainPageContainer";
-import AddPopUpContainer from "@/components/popup/AddPopUpContainer";
-import DetailedView from "@/views/DetailedView";
+import SearchComponent from "@/components/containers/AlbumContainer/SearchComponent";
+import MainPageComponent from "@/components/containers/AlbumContainer/AlbumListComponent";
+import AddPopUpContainer from "@/components/containers/PopupContainer/AddPopUpContainer";
+//import DetailedComponent from "@/components/containers/AlbumContainer/DetailedComponent";
 
 Vue.use(Router);
 
@@ -16,37 +16,65 @@ Vue.use(Router);
     routes: [
         {
             path: '/',
-            component: HomePage
+            component: HomeView
         },
+        // {
+        //     path: '/owned-albums',
+        //     component: OwnedAlbumsView,
+        //     children: [
+        //         {
+        //             name: 'allAlbums',
+        //             path: '/owned-albums/all',
+        //             component: MainPageComponent
+        //         },
+        //         {
+        //             name: 'search',
+        //             path: '/owned-albums/search',
+        //             component: SearchComponent
+        //         },
+        //         {
+        //             name: 'addAlbums',
+        //             path: '/owned-albums/add-album',
+        //             component: AddPopUpContainer
+        //         },
+        //         {
+        //             name: 'detailedView',
+        //             path: '/:id/album',
+        //             component: DetailedComponent
+        //         }
+        //     ]
+        // },
         {
-            path: '/owned-albums',
-            component: OwnedAlbums,
-            children: [
-                {
-                    name: 'allAlbums',
-                    path: '/owned-albums/all',
-                    component: MainPageContainer
-                },
-                {
-                    name: 'search',
-                    path: '/owned-albums/search',
-                    component: SearchPage
-                },
-                {
-                    name: 'addAlbums',
-                    path: '/owned-albums/add-album',
-                    component: AddPopUpContainer
-                },
-                {
-                    name: 'detailedView',
-                    path: '/:id/album',
-                    component: DetailedView
-                }
-            ]
+          path: '/owned-albums',
+          component: OwnedAlbumsView,
+          children:[
+              {
+                path: 'addAlbums',
+                component: AddPopUpContainer
+              },
+              {
+                  path: 'all',
+                  component: MainPageComponent
+              },
+              {
+                  path: 'search',
+                  components: {
+                      default: MainPageComponent,
+                      searchComp: SearchComponent
+                  }
+              },
+              {
+                  path: 'add',
+                  components:{
+                      default: MainPageComponent,
+                      addAlbums: AddPopUpContainer
+                  }
+              }
+          ]
         },
         {
             path: '/login',
-            component: Login,
+            component: LoginView,
             meta:{
                 public: true,
                 onlyWhenLoggedOut:true

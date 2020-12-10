@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import AddAlbumPopUp from "@/components/popup/AddAlbumPopUp";
-import SearchBoxComponent from "@/components/interactivePieces/SearchBoxComponent";
+import AddAlbumPopUp from "@/components/containers/PopupContainer/AddAlbumPopUp";
+import SearchBoxComponent from "@/components/containers/AlbumContainer/SearchBoxComponent";
 
 export default {
 name: "AddPopUpContainer",
@@ -29,6 +29,7 @@ name: "AddPopUpContainer",
 #container{
   width: 100%;
   height:100%;
+  position:absolute;
 }
 
 </style>

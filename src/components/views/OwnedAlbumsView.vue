@@ -2,16 +2,20 @@
     <div class="MainPageAlbum">
       <nav-bar class="sidebar"></nav-bar>
       <transition name="fade">
-        <router-view class="main-page" />
+        <div class="main-page">
+          <router-view name="searchComp"/>
+          <router-view class="addAlbums" name="addAlbums"/>
+          <router-view />
+        </div>
       </transition>
     </div>
 </template>
 
 <script>
-import NavBar from "@/components/containers/NavBarContainer";
+import NavBar from "@/components/containers/NavbarContainer/NavBarContainer";
 
 export default {
-name: "OwnedAlbums",
+name: "OwnedAlbumsView",
   components:{
     NavBar
   },

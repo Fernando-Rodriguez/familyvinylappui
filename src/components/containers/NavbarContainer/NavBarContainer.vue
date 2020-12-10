@@ -11,7 +11,7 @@
         <ButtonComponent class="button-components" button-content="Search" @button-clicked-event="SearchButtonEvent"  />
       </router-link>
       <ButtonComponent class="button-components" button-content="Logout" @button-clicked-event="LogoutButtonEvent"  />
-      <router-link class="router-link-style" to="/owned-albums/add-album" >
+      <router-link class="router-link-style" to="/owned-albums/add" >
         <ButtonComponent class="button-components" button-content="Add Albums" />
       </router-link>
     </div>
@@ -20,7 +20,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import ButtonComponent from "@/components/interactivePieces/ButtonComponent";
+import ButtonComponent from "@/components/componentPieces/ButtonComponent";
 
 export default {
   name: "NavBar",

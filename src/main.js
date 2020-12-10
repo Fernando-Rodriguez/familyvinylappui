@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './components/App.vue'
 import router from './router/index';
 import './assets/reset.css';
 //import VinylApiService from './services/api.service';

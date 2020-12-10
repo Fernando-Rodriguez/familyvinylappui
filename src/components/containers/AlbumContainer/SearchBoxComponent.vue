@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import InputComponent from "@/components/interactivePieces/InputComponent";
-import ButtonComponent from "@/components/interactivePieces/ButtonComponent";
+import InputComponent from "@/components/componentPieces/InputComponent";
+import ButtonComponent from "@/components/componentPieces/ButtonComponent";
 
 export default {
 name: "SearchBox",

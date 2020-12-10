@@ -1,10 +1,25 @@
 import VinylApiService from "@/services/vinylApiService";
 
 const state = {
-    albums: []
+    albums: [],
+    searchAlbums: [],
+    searchTerm: ""
 };
 
 const getters = {
+    albumModelArray: (state) =>
+    {
+        if(state.searchTerm === ''){
+            return state.albums;
+        }
+        else {
+            return state.albums.filter((album) => {
+                return (
+                    album.album.toLowerCase().includes(state.searchTerm.toLowerCase())
+                    || album.artist.toLowerCase().includes(state.searchTerm.toLowerCase()));
+            });
+        }
+    }
 
 };
 
@@ -19,6 +34,11 @@ const actions = {
         commit('addAlbum', addedAlbum);
         console.log(`Album ${addedAlbum.album} added`)
     },
+
+    setSearchField: async ({ commit }, searchItem) => {
+        commit('setSearch', searchItem);
+        console.log(`search set ${searchItem}`);
+    }
 };
 
 const mutations = {
@@ -29,6 +49,10 @@ const mutations = {
     addAlbum: (state, addedAlbum) => {
         state.albums.push(addedAlbum);
         console.log("album added");
+    },
+
+    setSearch: (state, searchItem) => {
+        state.searchTerm = searchItem;
     }
 };
 

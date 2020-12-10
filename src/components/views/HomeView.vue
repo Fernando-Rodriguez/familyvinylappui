@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>HomePage</h1>
+    <h1>HomeView</h1>
     <router-link to="/login">
-      <h2>Login</h2>
+      <h2>LoginView</h2>
     </router-link>
     <router-link to="/owned-albums/all">
       <h2>albums</h2>
@@ -16,10 +16,10 @@
 
 <script>
 import UserService from "@/services/user.service";
-import PopUpContainer from "@/components/popup/AddPopUpContainer";
+import PopUpContainer from "@/components/containers/PopupContainer/AddPopUpContainer";
 
 export default {
-name: "HomePage",
+name: "HomeView",
   components: {PopUpContainer},
   methods: {
     LogUserOut(){

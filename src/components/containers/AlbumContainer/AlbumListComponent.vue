@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import AlbumCardComponent from '../interactivePieces/AlbumCardComponent';
-import { mapState } from 'vuex';
+import AlbumCardComponent from './AlbumCardComponent';
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "MainPageAlbum",
+  name: "MainPageComponent",
   components:{
     AlbumCardComponent
   },
@@ -29,21 +29,24 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      albumModelArray: function(state)
-      {
-        if(this.InputSearchField === ""){
-          return state.albums.albums;
-        }
-        else {
-          return state.albums.albums.filter((album) => {
-            return (
-                album.album.toLowerCase().includes(this.InputSearchField.toLowerCase()) ||
-                album.artist.toLowerCase().includes(this.InputSearchField.toLowerCase()));
-          });
-        }
-      }
-    })
+    // ...mapState({
+    //   albumModelArray: function(state)
+    //   {
+    //     if(this.InputSearchField === ""){
+    //       return state.albums.albums;
+    //     }
+    //     else {
+    //       return state.albums.albums.filter((album) => {
+    //         return (
+    //             album.album.toLowerCase().includes(this.InputSearchField.toLowerCase()) ||
+    //             album.artist.toLowerCase().includes(this.InputSearchField.toLowerCase()));
+    //       });
+    //     }
+    //   }
+    //  }),
+    ...mapGetters('albums',[
+        'albumModelArray'
+    ])
   },
 
   methods:{
@@ -70,7 +73,8 @@ export default {
   data(){
     return {
       ClickedAlbum: [],
-      InputSearchField: ""
+      InputSearchField: "",
+      AlbumModels: []
     };
   }
 }
