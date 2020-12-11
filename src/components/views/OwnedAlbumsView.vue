@@ -1,7 +1,7 @@
 <template>
     <div class="MainPageAlbum">
       <nav-bar class="sidebar"></nav-bar>
-      <transition name="fade">
+      <transition name="fade" class="main-page-container">
         <div class="main-page">
           <router-view name="searchComp"/>
           <router-view class="addAlbums" name="addAlbums"/>
@@ -49,6 +49,16 @@ name: "OwnedAlbumsView",
   transition: ease-in 1s;
 }
 
+.main-page{
+}
+
+.sidebar{
+  height:100%;
+}
+
+.main-page-container{
+}
+
 .fade-enter-active,
 .fade-leave-active{
   transition: opacity 0.3s;
@@ -59,4 +69,5 @@ name: "OwnedAlbumsView",
 .fade-leave-to {
   opacity: 0;
 }
+
 </style>

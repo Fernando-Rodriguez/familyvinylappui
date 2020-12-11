@@ -22,6 +22,11 @@ export default {
 
   },
 
+  beforeDestroy() {
+    this.InputSearchField = '';
+    this.$store.dispatch('albums/setSearchField', this.InputSearchField);
+  },
+
   methods:{
 
     InputHandler(searchParam){

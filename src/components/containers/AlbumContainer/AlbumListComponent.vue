@@ -29,21 +29,6 @@ export default {
   },
 
   computed: {
-    // ...mapState({
-    //   albumModelArray: function(state)
-    //   {
-    //     if(this.InputSearchField === ""){
-    //       return state.albums.albums;
-    //     }
-    //     else {
-    //       return state.albums.albums.filter((album) => {
-    //         return (
-    //             album.album.toLowerCase().includes(this.InputSearchField.toLowerCase()) ||
-    //             album.artist.toLowerCase().includes(this.InputSearchField.toLowerCase()));
-    //       });
-    //     }
-    //   }
-    //  }),
     ...mapGetters('albums',[
         'albumModelArray'
     ])
@@ -85,7 +70,6 @@ export default {
 
 .main-container {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
