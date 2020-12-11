@@ -7,7 +7,7 @@ import TokenService from "@/services/token.service";
 import SearchComponent from "@/components/containers/AlbumContainer/SearchComponent";
 import MainPageComponent from "@/components/containers/AlbumContainer/AlbumListComponent";
 import AddPopUpContainer from "@/components/containers/PopupContainer/AddPopUpContainer";
-//import DetailedComponent from "@/components/containers/AlbumContainer/DetailedComponent";
+import DetailedComponent from "@/components/containers/AlbumContainer/DetailedComponent";
 
 Vue.use(Router);
 
@@ -69,6 +69,11 @@ Vue.use(Router);
                       default: MainPageComponent,
                       addAlbums: AddPopUpContainer
                   }
+              },
+              {
+                  name: 'detailedView',
+                  path: '/:id/album',
+                  component: DetailedComponent
               }
           ]
         },

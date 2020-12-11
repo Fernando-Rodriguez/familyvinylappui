@@ -72,15 +72,6 @@ export default {
   transition: ease-in-out 0.2s;
 }
 
-.container{
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  background-color: #171717;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .search-container{
   margin: 10px;
 }

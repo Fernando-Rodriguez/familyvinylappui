@@ -8,15 +8,18 @@
       <div class="detailed-rating">
         <h2> This album has {{ this.album.rating }} stars </h2>
       </div>
+      <button-component button-content="Delete Album" @button-clicked-event="DeleteAlbum" />
     </div>
   </div>
 </template>
 
 <script>
 import VinylApiService from '../../../services/vinylApiService';
+import ButtonComponent from "@/components/componentPieces/ButtonComponent";
 
 export default {
 name: "DetailedComponent",
+  components: {ButtonComponent},
   data(){
     return{
       album: {}
@@ -34,8 +37,16 @@ name: "DetailedComponent",
    async QueryAlbumAsync(){
       if(this.currentAlbumId != null) {
         this.album = await VinylApiService.searchDataAsync(this.currentAlbumId);
-        console.log(this.album);
+        console.log(this.album.album);
       }
+    },
+
+    async DeleteAlbum(){
+      // this will be used to remove album from store.
+      await this.$store.dispatch('albums/removeAlbum', this.album.id);
+      console.log(`Album ${this.album.album} clicked on`);
+
+      await this.$router.push('/owned-albums/all');
     }
   }
 }

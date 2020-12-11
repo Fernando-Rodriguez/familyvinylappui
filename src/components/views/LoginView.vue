@@ -12,7 +12,7 @@
         <div class="login-form">
           <InputComponent label-name="UserName" @input-changed="HandleUsername"/>
           <PasswordComponent label-name="Password" @input-changed="HandlePassword" />
-         <ButtonComponent @button-clicked-event="LoginUser" button-content="LoginView" />
+         <ButtonComponent @button-clicked-event="LoginUser" button-content="Login!" />
         </div>
       </div>
     </div>

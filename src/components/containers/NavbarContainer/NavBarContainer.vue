@@ -87,6 +87,7 @@ export default {
   box-sizing: inherit;
   width: 200px;
   padding: 10px;
+  border-radius: 40px;
   box-shadow: 1px 1px 10px 1px black;
 }
 

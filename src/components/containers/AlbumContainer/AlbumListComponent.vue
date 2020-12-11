@@ -3,8 +3,7 @@
     <div class="container">
       <div v-for="(album, index) in albumModelArray" v-bind:Key="index">
         <router-link v-bind:to="`/${album.id}/album`">
-          <album-card-component v-bind:albumModel="album"
-                                @card-clicked="AlbumClickedOn"/>
+          <album-card-component v-bind:albumModel="album" @card-clicked="AlbumClickedOn"/>
         </router-link>
       </div>
     </div>
@@ -21,13 +20,6 @@ export default {
     AlbumCardComponent
   },
 
-  created(){
-    this.$store.dispatch('albums/getAllAlbumsAsync');
-  },
-
-  mounted(){
-  },
-
   computed: {
     ...mapGetters('albums',[
         'albumModelArray'
@@ -41,23 +33,13 @@ export default {
       console.log(this.InputSearchField);
     },
 
-    AlbumClickedOn(params){
-      let filterList = [];
-      for(let i = 0; i < this.albumModelArray.length; i++ ){
-        if(this.albumModelArray[i] === params){
-          filterList.push(this.albumModelArray[i]);
-        }
-      }
-      this.ClickedAlbum = filterList;
-      this.ClickedAlbum.forEach(a => {
-        alert(a.album);
-      });
+    async AlbumClickedOn(){
+
     }
   },
 
   data(){
     return {
-      ClickedAlbum: [],
       InputSearchField: "",
       AlbumModels: []
     };

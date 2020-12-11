@@ -2,7 +2,6 @@ import VinylApiService from "@/services/vinylApiService";
 
 const state = {
     albums: [],
-    searchAlbums: [],
     searchTerm: ""
 };
 
@@ -20,12 +19,11 @@ const getters = {
             });
         }
     }
-
 };
 
 const actions = {
 
-    getAllAlbumsAsync: async ({ commit }) => {
+    initAlbumStore: async ({ commit }) => {
         commit('setAlbums', await VinylApiService.getDataAsync());
         console.log(`Albums called in store. ${state.albums}`);
     },
@@ -38,6 +36,11 @@ const actions = {
     setSearchField: async ({ commit }, searchItem) => {
         commit('setSearch', searchItem);
         console.log(`search set ${searchItem}`);
+    },
+
+    removeAlbum: async ({ commit }, albumToDelete) => {
+        commit('deleteAlbum', albumToDelete);
+        console.log(`album: ${albumToDelete} deleted from store.`);
     }
 };
 
@@ -48,11 +51,16 @@ const mutations = {
 
     addAlbum: (state, addedAlbum) => {
         state.albums.push(addedAlbum);
-        console.log("album added");
     },
 
     setSearch: (state, searchItem) => {
         state.searchTerm = searchItem;
+    },
+
+    deleteAlbum : (state, albumToDeleteId) => {
+        state.albums = state.albums.filter((album) => {
+            return (album.id !== albumToDeleteId);
+        });
     }
 };
 
